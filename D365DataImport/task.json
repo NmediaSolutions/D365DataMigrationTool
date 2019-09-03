@@ -7,9 +7,9 @@
   "category": "Utility",
   "author": "NMEDIA",
   "version": {
-    "Major": 0,
-    "Minor": 1,
-    "Patch": 4
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
   },
   "instanceNameFormat": "Import data into Dynamics 365",
   "inputs": [

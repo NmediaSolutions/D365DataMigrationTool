@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "D365DataMigration",
   "name": "Dynamics 365 Data Migration Tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "NMEDIA",
   "targets": [
     {
@@ -22,10 +22,14 @@
     "Dynamics 365 Data Export",
     "Dynamics 365 Data Import",
     "CDS",
-	"D365"
+    "D365"
   ],
   "icons": {
     "default": "images/extension-icon.png"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/NmediaSolutions/D365DataMigrationTool"
   },
   "files": [
     {
