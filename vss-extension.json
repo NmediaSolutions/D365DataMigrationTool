@@ -1,0 +1,68 @@
+{
+  "manifestVersion": 1,
+  "id": "D365DataMigration",
+  "name": "Dynamics 365 Data Migration Tool",
+  "version": "1.0.0",
+  "publisher": "NMEDIA",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tools for export and import data from Dynamics 365 instances",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "public": true,
+  "tags": [
+    "Dynamics",
+    "Dynamics 365",
+    "CRM",
+    "Dynamics 365 Data Migration Tool",
+    "Dynamics 365 Data Export",
+    "Dynamics 365 Data Import",
+    "CDS",
+	"D365"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "D365DataExport"
+    },
+    {
+      "path": "D365DataImport"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license"
+    }
+  },
+  "contributions": [
+    {
+      "id": "D365DataExport",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "D365DataExport"
+      }
+    },
+    {
+      "id": "D365DataImport",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "D365DataImport"
+      }
+    }
+  ]
+}

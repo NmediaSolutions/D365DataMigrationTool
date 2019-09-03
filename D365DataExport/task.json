@@ -1,0 +1,53 @@
+{
+  "id": "39f50597-d3db-42e0-b82b-3458d1585ca6",
+  "name": "D365DataExport",
+  "friendlyName": "Dynamics 365 Data Export",
+  "description": "Export data from a Dynamics 365 instance",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "NMEDIA",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 3
+  },
+  "instanceNameFormat": "Export Data from Dynamics 365",
+  "inputs": [
+    {
+      "name": "ConnectionString",
+      "type": "string",
+      "label": "Dynamics 365 connection string",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Connection string of the Dynamics 365 instance from which you wish to export data."
+    },
+    {
+      "name": "Entities",
+      "type": "string",
+      "label": "Entities to export",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "E.g.: Entity1;Entity2,Guid1,Guid2;Entity3"
+    },
+    {
+      "name": "AttributesExcluded",
+      "type": "string",
+      "label": "Attributes to exclude from the export",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "E.g.: Attribute1;Attribute2"
+    },
+    {
+      "name": "File",
+      "type": "string",
+      "label": "Path of the exported file",
+      "defaultValue": "",
+      "required": true
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "index.js"
+    }
+  }
+}

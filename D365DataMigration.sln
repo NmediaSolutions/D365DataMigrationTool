@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D365DataMigrationTool", "D365DataMigrationTool\D365DataMigrationTool.csproj", "{AECB9819-A42F-43CE-9DB4-9F82CDC91F5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D365DataExport", "D365DataExport", "{AD538640-8377-44A9-965B-C38771E3FF32}"
+	ProjectSection(SolutionItems) = preProject
+		D365DataExport\icon.png = D365DataExport\icon.png
+		D365DataExport\index.js = D365DataExport\index.js
+		D365DataExport\index.ts = D365DataExport\index.ts
+		D365DataExport\package-lock.json = D365DataExport\package-lock.json
+		D365DataExport\package.json = D365DataExport\package.json
+		D365DataExport\task.json = D365DataExport\task.json
+		D365DataExport\tsconfig.json = D365DataExport\tsconfig.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{19851D62-1D2C-44B9-8408-B80168E21821}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		vss-extension.json = vss-extension.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D365DataImport", "D365DataImport", "{8C790E2D-C695-4709-B76D-EEC56F0CB831}"
+	ProjectSection(SolutionItems) = preProject
+		D365DataImport\icon.png = D365DataImport\icon.png
+		D365DataImport\index.js = D365DataImport\index.js
+		D365DataImport\index.ts = D365DataImport\index.ts
+		D365DataImport\package-lock.json = D365DataImport\package-lock.json
+		D365DataImport\package.json = D365DataImport\package.json
+		D365DataImport\task.json = D365DataImport\task.json
+		D365DataImport\tsconfig.json = D365DataImport\tsconfig.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{88DE4426-3C4A-46C6-B5DF-405E20DD16BF}"
+	ProjectSection(SolutionItems) = preProject
+		images\extension-icon.png = images\extension-icon.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AECB9819-A42F-43CE-9DB4-9F82CDC91F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECB9819-A42F-43CE-9DB4-9F82CDC91F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECB9819-A42F-43CE-9DB4-9F82CDC91F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECB9819-A42F-43CE-9DB4-9F82CDC91F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD538640-8377-44A9-965B-C38771E3FF32} = {19851D62-1D2C-44B9-8408-B80168E21821}
+		{8C790E2D-C695-4709-B76D-EEC56F0CB831} = {19851D62-1D2C-44B9-8408-B80168E21821}
+		{88DE4426-3C4A-46C6-B5DF-405E20DD16BF} = {19851D62-1D2C-44B9-8408-B80168E21821}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98610D26-24B7-4B6B-A270-E65B3DD373FF}
+	EndGlobalSection
+EndGlobal
