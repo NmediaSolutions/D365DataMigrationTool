@@ -97,15 +97,16 @@ namespace D365DataMigrationTool
           Entity existingEntity = existingEntities.Find(x => x.Id == entityToImport.Id);
           if (existingEntity == null)
           {
-            service.Create(entityToImport);
-            Console.WriteLine("Creation of {0} with Id {1}", entityToImport.LogicalName, entityToImport.Id);
+            Entity updatedEntityToImport = RemoveAttributes(excludedAttributes, entityToImport);
+            service.Create(updatedEntityToImport);
+            Console.WriteLine("Creation of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
           }
           else if (!excludedEntitiesFromUpdate.Contains(existingEntity.LogicalName))
           {
-            Entity UpdatedEntityToImport = RemoveAttributes(excludedAttributes, entityToImport);
+            Entity updatedEntityToImport = RemoveAttributes(excludedAttributes, entityToImport);
 
-            service.Update(UpdatedEntityToImport);
-            Console.WriteLine("Update of {0} with Id {1}", UpdatedEntityToImport.LogicalName, UpdatedEntityToImport.Id);
+            service.Update(updatedEntityToImport);
+            Console.WriteLine("Update of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
           }
           else
           {
