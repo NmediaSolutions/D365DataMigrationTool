@@ -10,7 +10,7 @@ The project consists of a tool that can export or import data from a Dynamics 36
 ## Getting Started
 You can install and download this extension from the Visual Studio Marketplace, along with more documentation about the tool:
 
-https://marketplace.visualstudio.com/url.of.the.tool
+https://marketplace.visualstudio.com/items?itemName=Nmedia.D365DataMigration
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
