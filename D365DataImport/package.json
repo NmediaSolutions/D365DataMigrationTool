@@ -1,6 +1,6 @@
 {
   "name": "D365DataImporttask",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "azure-pipelines-task-lib": "^2.7.7"
   },
   "devDependencies": {
-    "@types/node": "^11.11.0",
-    "@types/q": "^1.5.1"
+    "@types/node": "^11.15.16",
+    "@types/q": "^1.5.4"
   }
 }
