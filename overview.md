@@ -43,6 +43,8 @@ As some entities are referring to others, be careful with the import sequence. A
 If an error occurs when importing an entity, the data import will continue and conclude with an error message.
 
 ## Version History
+1.0.5 Fix issue with export task
+
 1.0.4 improve logging on error
 
 1.0.0 Initial Release
