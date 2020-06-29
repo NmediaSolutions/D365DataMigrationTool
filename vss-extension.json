@@ -2,14 +2,14 @@
   "manifestVersion": 1,
   "id": "D365DataMigration",
   "name": "Dynamics 365 Data Migration Tool",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "publisher": "NMEDIA",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tools for export and import data from Dynamics 365 instances",
+  "description": "Tools for export and import data from Dynamics 365 customer engagement and Common Data Service for apps instances",
   "categories": [
     "Azure Pipelines"
   ],
@@ -17,12 +17,15 @@
   "tags": [
     "Dynamics",
     "Dynamics 365",
+	"Customer Engagment",
     "CRM",
     "Dynamics 365 Data Migration Tool",
     "Dynamics 365 Data Export",
     "Dynamics 365 Data Import",
     "CDS",
-    "D365"
+    "D365",
+	"Common Data Service",
+	"Power Platform"
   ],
   "icons": {
     "default": "images/extension-icon.png"

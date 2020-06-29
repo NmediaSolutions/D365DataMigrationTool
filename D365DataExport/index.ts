@@ -19,14 +19,14 @@ async function run() {
     console.log(`calling ${path}\\D365DataMigrationTool.exe /export /connectionstring:"${connectionString}" /entities:${entities} ${argAttributesExcluded} /file:${file}`);
     
     exec(`${path}\\D365DataMigrationTool.exe /export /connectionstring:"${connectionString}" /entities:${entities} ${argAttributesExcluded} /file:${file}`, ( error: any, stdout: any, stderr: any) => {
+      console.log(`stdout: ${stdout}`);
+      if (stderr != "") {
+        console.log(`stderr: ${stderr}`);
+      }
       if (error) {
         console.error(`exec error: ${error}`);
         tl.setResult(tl.TaskResult.Failed, error);
         return;
-      }
-      console.log(`stdout: ${stdout}`);
-      if (stderr != "") {
-        console.log(`stderr: ${stderr}`);
       }
     });
   }

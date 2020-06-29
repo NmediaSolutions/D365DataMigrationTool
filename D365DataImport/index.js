@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -23,20 +24,20 @@ function run() {
             }
             var argEntitiesOnlyCreate = "";
             if (entitiesOnlyCreate != null) {
-                argEntitiesOnlyCreate = `/entities:${entitiesOnlyCreate}`;
+                argEntitiesOnlyCreate = `/entitiesonlycreate:${entitiesOnlyCreate}`;
             }
             var path = __dirname;
             console.log(`Calling ${path}\\D365DataMigrationTool.exe /import /connectionstring:"${connectionString}" /entities:${entities} ${argAttributesExcluded} ${argEntitiesOnlyCreate} /file:${file}`);
             const { exec } = require('child_process');
             exec(`${path}\\D365DataMigrationTool.exe /import /connectionstring:"${connectionString}" /entities:${entities} ${argAttributesExcluded} ${argEntitiesOnlyCreate} /file:${file}`, (error, stdout, stderr) => {
+                console.log(`stdout: ${stdout}`);
+                if (stderr != "") {
+                    console.log(`stderr: ${stderr}`);
+                }
                 if (error) {
                     console.error(`exec error: ${error}`);
                     tl.setResult(tl.TaskResult.Failed, error);
                     return;
-                }
-                console.log(`stdout: ${stdout}`);
-                if (stderr != "") {
-                    console.log(`stderr: ${stderr}`);
                 }
             });
         }
