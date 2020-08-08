@@ -27,6 +27,10 @@ namespace D365DataMigrationTool
     {
       Console.WriteLine("Entering ExportConfigurationToFile. Export configuration to file {0}", exportedFile);
       var service = GetOrganizationService(connectionString);
+      if (service == null)
+      {
+        throw new UnauthorizedAccessException("An error occured while connecting. Please check your connection string. This may also appears if Multi Factor Authentification is activated on the selected account");
+      }
       List<Entity> entities = new List<Entity>();
       List<string> entityLogicalNames = entitiesLogicalNamesToExport.Split(';').ToList();
       foreach (string entity in entityLogicalNames)
@@ -66,6 +70,10 @@ namespace D365DataMigrationTool
       Console.WriteLine("Entering ImportEntitiesToCrm. Import configuration from {0}", fromFile);
 
       var service = GetOrganizationService(connectionString);
+      if (service == null)
+      {
+        throw new UnauthorizedAccessException("An error occured while connecting. Please check your connection string. This may also appears if Multi Factor Authentification is activated on the selected account");
+      }
       List<Entity> exportedEntities = new List<Entity>();
       exportedEntities = (List<Entity>)DataContractDeserialize(File.ReadAllText(fromFile), exportedEntities.GetType());
 
@@ -89,6 +97,12 @@ namespace D365DataMigrationTool
       List<string> excludedAttributes = attributesExcludedFromImport.Split(';').ToList();
       List<string> excludedEntitiesFromUpdate = entitiesExcludedFromUpdate.Split(';').ToList();
 
+      bool isInformationLogActivated = entitiesToImport.Count < 2000;
+      if (!isInformationLogActivated)
+      {
+        Console.WriteLine($"Due to the large amount of entities to process ({entitiesToImport.Count}), only errors and warnings will be logged");
+      }
+
       bool importFailed = false;
       foreach (Entity entityToImport in entitiesToImport)
       {
@@ -99,18 +113,18 @@ namespace D365DataMigrationTool
           {
             Entity updatedEntityToImport = RemoveAttributes(excludedAttributes, entityToImport);
             service.Create(updatedEntityToImport);
-            Console.WriteLine("Creation of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
+            if (isInformationLogActivated) Console.WriteLine("Creation of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
           }
           else if (!excludedEntitiesFromUpdate.Contains(existingEntity.LogicalName))
           {
             Entity updatedEntityToImport = RemoveAttributes(excludedAttributes, entityToImport);
 
             service.Update(updatedEntityToImport);
-            Console.WriteLine("Update of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
+            if (isInformationLogActivated) Console.WriteLine("Update of {0} with Id {1}", updatedEntityToImport.LogicalName, updatedEntityToImport.Id);
           }
           else
           {
-            Console.WriteLine("No update needed for {0} with Id {1}", entityToImport.LogicalName, entityToImport.Id);
+            if (isInformationLogActivated) Console.WriteLine("No update needed for {0} with Id {1}", entityToImport.LogicalName, entityToImport.Id);
           }
         }
         catch (Exception e)
@@ -144,8 +158,29 @@ namespace D365DataMigrationTool
         }
         qe.Criteria.AddCondition(cond);
       }
+      PagingInfo pageInfo = new PagingInfo();
+      pageInfo.Count = 5000;
+      pageInfo.PageNumber = 1;
+      pageInfo.PagingCookie = null;
 
-      return service.RetrieveMultiple(qe).Entities.ToList();
+      qe.PageInfo = pageInfo;
+
+      List<Entity> entities = new List<Entity>();
+      while (true)
+      {
+        var results = service.RetrieveMultiple(qe);
+        entities.AddRange(results.Entities);
+        if (results.MoreRecords)
+        {
+          qe.PageInfo.PageNumber++;
+          qe.PageInfo.PagingCookie = results.PagingCookie;
+        }
+        else
+        {
+          break;
+        }
+      }
+      return entities;
     }
 
     public static IOrganizationService GetOrganizationService(string connectionString)

@@ -25,9 +25,7 @@ namespace D365DataMigrationTool
     /// Export or import configuration
     /// </summary>
     /// <param name="command">"export" or "import"</param>
-    /// <param name="uri">Uri of the Dynamics instance.</param>
-    /// <param name="userName">UserName to connect to Dynamics.</param>
-    /// <param name="pwd">Password to connect to Dynamics.</param>
+    /// <param name="connectionstring">connectionstring for the CDS instance.</param>
     /// <param name="entities">List of type of entities to export or import. "Entity1;Entity2,Guid1,Guid2;Entity3"</param>
     /// <param name="attributesExcluded">Attributes to exclude. "Attribute1;Attribute2"</param>
     /// <param name="file">Path of the exported file or file to import.</param>
