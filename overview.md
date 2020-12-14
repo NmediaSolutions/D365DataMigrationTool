@@ -1,5 +1,5 @@
 # Dynamics 365 Data Migration Tool
-Improve your ALM processes and simplify your build & release procedures by automatically exporting and importing your data between your multiple Dynamics 365 Customer Engagement, or Common Data Service, environments with the **Dynamics 365 Data Migration Tool**. 
+Improve your ALM processes and simplify your build & release procedures by automatically exporting and importing your data between your multiple Dynamics 365 Customer Engagement, or Microsoft Dataverse (Common Data Service), environments with the **Dynamics 365 Data Migration Tool**. 
 
 This task has the same objective than the [Configuration Migration tool](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/manage-configuration-data) provided by Microsoft for Dynamics 365, but instead of manually launching exports and imports, you can automate them in your Azure DevOps build and release procedures.   
 
@@ -43,6 +43,8 @@ As some entities are referring to others, be careful with the import sequence. A
 If an error occurs when importing an entity, the data import will continue and conclude with an error message.
 
 ## Version History
+1.0.7 Fix for connection string of type "ClientSecret"
+
 1.0.6 Add Management of more than 5000 records for a single entity.
 
 1.0.5 Fix issue with export task
